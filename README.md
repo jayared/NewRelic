@@ -7,7 +7,7 @@ The build framework provided here uses gradle to build  project and manage depen
 The entire solution uses java.io.* java.net.* java.util.* java.Nio.* No Dependencies. 
 
 <B>Project Layout</B>
-All source code should be located in the src/main/java folder.
+All source code is located in the src/main/java folder.
 The Main script is in /src/main/java/com/newrelic/codingchallenge/Main.java.
 
 
