@@ -12,6 +12,8 @@ The Main script is in /src/main/java/com/newrelic/codingchallenge/Main.java.
 
 The entire solution uses java.io.* java.net.* java.util.* java.Nio.* No Dependencies. 
 
+ <B>Assumptions</B>
+
 Deleted "numbers.log" file while the socket is started if the file exists.
 
 By using  ExecutorService fixed thread pool size is limited to 5.
