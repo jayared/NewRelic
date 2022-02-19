@@ -136,7 +136,6 @@ public class Server {
 			try {
 				clientSocket.close();
 				clientSocket.shutdownInput();
-				Runtime.getRuntime().exit(1);
 				if (!executorService.awaitTermination(10, TimeUnit.SECONDS)) {
 					running.set(false);
 					executorService.shutdownNow();
