@@ -1,4 +1,4 @@
-Coding Challenge(Java 1.8).Cancel changes
+Coding Challenge New Relic (Java 1.8).
 
 The Main script is in /src/main/java/com/newrelic/codingchallenge/Main.java.
 
