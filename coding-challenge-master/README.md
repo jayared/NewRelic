@@ -6,10 +6,16 @@ The entire solution uses java.io.* java.net.* java.util.* java.Nio.* No Dependen
 
 Deleted "Numbers.log" file while the socket is started if the file exists.
 
-By using  ExecutorService fixed thread pool size is limited.
+By using  ExecutorService fixed thread pool size is limited to 5.
+
+Executor service shuts down if the input contains "terminate".
 
 Created LogWriterTask to write to Numbers.Log
-Created SummaryTask to write Summary for 10 seconds.
+
+Any data that does not conform to a valid line of input is discarded and the client connection terminated immediately and without comment.
+
+Created SummaryTask to write Summary for 10 seconds in the console.
+
 
 A Server class that handles and reads the input streams for each of the clients. responding to inputs dynamically as they come in.
 
@@ -21,8 +27,6 @@ Used BlockingQueue -
 A Queue that additionally supports operations that wait for the queue to become non-empty when retrieving an element, and wait for space to become available in the queue when storing an element.
 
 Numeric Literals are used to improve the readability of code.
-
-Executor service shuts down if the input contains "terminate".
 
 AtomicBoolean is used to control the while loop.
 
