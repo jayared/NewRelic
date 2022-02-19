@@ -28,7 +28,8 @@ public class Server {
 		try {
 			serverSocket = new ServerSocket(port);
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println(e);
+			;
 		}
 
 		LogWriterTask logWriterTask = new LogWriterTask(blockingQueue);
@@ -39,7 +40,8 @@ public class Server {
 				ClientHandler clientHandler = new ClientHandler(serverSocket.accept(), blockingQueue, executorService);
 				executorService.submit(clientHandler);
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.err.println(e);
+				;
 			}
 		}
 	}
@@ -85,7 +87,8 @@ public class Server {
 					try {
 						inputLine = in.readLine();
 					} catch (SocketException e) {
-						e.printStackTrace();
+						System.err.println(e);
+						;
 						break;
 					}
 
@@ -101,7 +104,8 @@ public class Server {
 					blockingQueue.add(parseInt(inputLine));
 				}
 			} catch (IOException | NumberFormatException e) {
-				e.printStackTrace();
+				System.err.println(e);
+				;
 			} finally {
 				closeSocket();
 			}
@@ -125,9 +129,9 @@ public class Server {
 		private void closeSocket() {
 			try {
 				clientSocket.close();
-				System.out.println("Client connection closed");
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.err.println(e);
+				;
 			}
 		}
 
