@@ -10,7 +10,7 @@ By using  ExecutorService fixed thread pool size is limited to 5.
 
 Executor service shuts down if the input contains "terminate".
 
-Created LogWriterTask to write to Numbers.Log
+Created LogWriterTask to write to numbers.log
 
 Any data that does not conform to a valid line of input is discarded and the client connection terminated immediately and without comment.
 
@@ -21,7 +21,7 @@ A Server class that handles and reads the input streams for each of the clients.
 
 A BitSet is used to identify duplicates. 
 
-As per requirement, only Unique numbers are logged to the Numbers.Log file.
+As per requirement, only Unique numbers are logged to the numbers.log file.
 
 Used BlockingQueue -
 A Queue that additionally supports operations that wait for the queue to become non-empty when retrieving an element, and wait for space to become available in the queue when storing an element.
