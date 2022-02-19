@@ -2,17 +2,15 @@ Coding Challenge New Relic (Java 1.8).
 
 
 <B>Gradle</B>
-The build framework provided here uses gradle to build your project and manage your dependencies. The gradlew command used here will automatically download gradle for you so you shouldn't need to install anything other than java.
+The build framework provided here uses gradle to build  project and manage  dependencies. The gradlew command used here will automatically download gradle for you so you shouldn't need to install anything other than java.
 
 <B>Project Layout</B>
-All source code should be located in the src/main/java folder. 
-A starter Main.java file has been provided in the com/newrelic/codingchallenge package under src/main/java.
-
+All source code should be located in the src/main/java folder.
 The Main script is in /src/main/java/com/newrelic/codingchallenge/Main.java.
 
 The entire solution uses java.io.* java.net.* java.util.* java.Nio.* No Dependencies. 
 
- <B>Assumptions</B>
+ <B>Assumptions or Solution</B>
 
 Deleted "numbers.log" file while the socket is started if the file exists.
 
