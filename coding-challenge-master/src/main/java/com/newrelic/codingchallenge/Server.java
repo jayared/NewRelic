@@ -132,9 +132,20 @@ public class Server {
 		}
 
 		private void shutDown() {
-		      executorService.shutdown();
-                      Runtime.getRuntime().exit(1);
-		}
+			executorService.shutdown();
+			try {
+				clientSocket.close();
+				clientSocket.shutdownInput();
+				Runtime.getRuntime().exit(1);
+				if (!executorService.awaitTermination(10, TimeUnit.SECONDS)) {
+					running.set(false);
+					executorService.shutdownNow();
+				}
+			} catch (Exception e) {
+				executorService.shutdownNow();
+			} finally {
+				Runtime.getRuntime().exit(1);
+			}
 
 	}
 }
