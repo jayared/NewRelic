@@ -45,12 +45,13 @@ public final class LogWriterTask implements Runnable {
 						outputWriter.newLine();
 						outputWriter.flush();
 					} catch (IOException e) {
-						e.printStackTrace();
+						System.err.println(e);
+						;
 					}
 				}
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println(e);
 		} catch (InterruptedException e) {
 			System.err.println("LogWriterTask interrupted");
 		}
