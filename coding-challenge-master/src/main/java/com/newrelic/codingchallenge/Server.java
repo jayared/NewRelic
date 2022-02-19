@@ -14,6 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Server {
 
@@ -21,6 +22,7 @@ public class Server {
 	private final BlockingQueue<Integer> blockingQueue = new LinkedBlockingQueue<>();
 	private final ExecutorService executorService = Executors.newFixedThreadPool(MAX_CLIENTS);
 	private ServerSocket serverSocket;
+	private AtomicBoolean running = new AtomicBoolean(true);
 
 	public void start(int port) {
 		try {
@@ -57,7 +59,7 @@ public class Server {
 		}
 	}
 
-	private static class ClientHandler implements Runnable {
+	private class ClientHandler implements Runnable {
 
 		private final BlockingQueue<Integer> blockingQueue;
 		private final Socket clientSocket;
@@ -74,8 +76,7 @@ public class Server {
 
 			try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
 
-				System.out.println("Client connection started");
-				while (true) {
+				while (running.get()) {
 					if (Thread.currentThread().isInterrupted()) {
 						break;
 					}
@@ -92,7 +93,7 @@ public class Server {
 						break;
 					}
 
-					if (inputLine.equals("terminate")) {
+					if (inputLine.equalsIgnoreCase("terminate")) {
 						shutDown();
 						break;
 					}
@@ -107,9 +108,6 @@ public class Server {
 		}
 
 		private int parseInt(String inputLine) throws NumberFormatException {
-			if (inputLine.equalsIgnoreCase("terminate")) {
-				closeSocket();
-			}
 
 			if (inputLine.length() != 9) {
 				throw new NumberFormatException("Input has invalid length: '" + inputLine + "'");
@@ -136,12 +134,14 @@ public class Server {
 		private void shutDown() {
 			executorService.shutdown();
 			try {
-				if (!executorService.awaitTermination(100, TimeUnit.MILLISECONDS)) {
+				if (!executorService.awaitTermination(10, TimeUnit.SECONDS)) {
+					running.set(false);
 					executorService.shutdownNow();
 				}
 			} catch (InterruptedException e) {
 				executorService.shutdownNow();
 			}
 		}
+
 	}
 }
