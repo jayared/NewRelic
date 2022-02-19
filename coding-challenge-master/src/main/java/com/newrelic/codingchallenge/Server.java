@@ -147,5 +147,6 @@ public class Server {
 				Runtime.getRuntime().exit(1);
 			}
 
+		}
 	}
 }
