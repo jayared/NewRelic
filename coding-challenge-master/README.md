@@ -1,33 +1,156 @@
-Coding Challenge New Relic (Java 1.8).
+# coding-challenge
 
-The Main script is in /src/main/java/com/newrelic/codingchallenge/Main.java.
+Coding Challenge Build Framework
 
-The entire solution uses java.io.* java.net.* java.util.* java.Nio.* No Dependencies. 
+## Starter build framework for the coding challenge
 
-Deleted "numbers.log" file while the socket is started if the file exists.
-
-By using  ExecutorService fixed thread pool size is limited to 5.
-
-Executor service shuts down if the input contains "terminate".
-
-Created LogWriterTask to write to numbers.log
-
-Any data that does not conform to a valid line of input is discarded and the client connection terminated immediately and without comment.
-
-Created SummaryTask to write Summary for every 10 seconds in the console.
+First, you do not need to use this starter framework for your project.
+If you would rather use a different build system (maven, javac, ...)
+you are free to so long as you provide clear commands to build your
+project and start your server.  Failure to do so will invalidate your
+submission.
 
 
-A Server class that handles and reads the input streams for each of the clients. responding to inputs dynamically as they come in.
+## Install Java
 
-A BitSet is used to identify duplicates. 
+This coding challenge has been set up for Java 11. It is recommended 
+that you install the current LTS version of Java from 
+[AdoptOpenJDK](https://adoptopenjdk.net/)
 
-As per requirement, only Unique numbers are logged to the numbers.log file.
 
-Used BlockingQueue -
-A Queue that additionally supports operations that wait for the queue to become non-empty when retrieving an element, and wait for space to become available in the queue when storing an element.
+## Gradle
 
-Numeric Literals are used to improve the readability of code.
+The build framework provided here uses gradle to build your project
+and manage your dependencies.  The `gradlew` command used here will
+automatically download gradle for you so you shouldn't need to install
+anything other than java.
 
-AtomicBoolean is used to control the while loop.
 
-Wrote unit cases to cover all edge cases.
+### Project Layout
+
+All source code should be located in the `src/main/java` folder.
+If you wish to write any tests (not a requirement) they should be
+located in the `src/test/java` folder.
+
+A starter `Main.java` file has been provided in the 
+`com/newrelic/codingchallenge` package under `src/main/java`.
+
+
+### Dependencies
+
+If your project has any dependencies you can list them in the
+`build.gradle` file in the `dependencies` section.
+
+
+### Building your project from the command line
+
+To build the project on Linux or MacOS run the command `./gradlew build` 
+in a shell terminal.  This will build the source code in
+`src/main/java`, run any tests in `src/test/java` and create an output
+jar file in the `build/libs` folder.
+
+To clean out any intermediate files run `./gradlew clean`.  This will
+remove all files in the `build` folder.
+
+
+### Running your application from the command line
+
+You first must create a shadow jar file.  This is a file which contains your 
+project code and all dependencies in a single jar file.  To build a shadow 
+jar from your project run `./gradlew shadowJar`.  This will create a 
+`coding-challenge-shadow.jar` file in the `build/libs` directory.
+
+You can then start your application by running the command
+`java -jar ./build/libs/coding-challenge-shadow.jar`
+
+## IDEA
+
+You are free to use whichever editor or IDE you want providing your
+projects build does not depend on that IDE.  Most of the Java
+developers at New Relic use IDEA from
+[JetBrains](https://www.jetbrains.com/).  JetBrains provides
+a community edition of IDEA which you can download and use without
+charge.
+
+If you are planning to use IDEA you can generate the IDEA project files
+by running `./gradlew idea` and directly opening the project folder
+as a project in idea.
+
+# coding-challenge
+
+Coding Challenge Build Framework
+
+## Starter build framework for the coding challenge
+
+First, you do not need to use this starter framework for your project.
+If you would rather use a different build system (maven, javac, ...)
+you are free to so long as you provide clear commands to build your
+project and start your server.  Failure to do so will invalidate your
+submission.
+
+
+## Install Java
+
+This coding challenge has been set up for Java 11. It is recommended 
+that you install the current LTS version of Java from 
+[AdoptOpenJDK](https://adoptopenjdk.net/)
+
+
+## Gradle
+
+The build framework provided here uses gradle to build your project
+and manage your dependencies.  The `gradlew` command used here will
+automatically download gradle for you so you shouldn't need to install
+anything other than java.
+
+
+### Project Layout
+
+All source code should be located in the `src/main/java` folder.
+If you wish to write any tests (not a requirement) they should be
+located in the `src/test/java` folder.
+
+A starter `Main.java` file has been provided in the 
+`com/newrelic/codingchallenge` package under `src/main/java`.
+
+
+### Dependencies
+
+If your project has any dependencies you can list them in the
+`build.gradle` file in the `dependencies` section.
+
+
+### Building your project from the command line
+
+To build the project on Linux or MacOS run the command `./gradlew build` 
+in a shell terminal.  This will build the source code in
+`src/main/java`, run any tests in `src/test/java` and create an output
+jar file in the `build/libs` folder.
+
+To clean out any intermediate files run `./gradlew clean`.  This will
+remove all files in the `build` folder.
+
+
+### Running your application from the command line
+
+You first must create a shadow jar file.  This is a file which contains your 
+project code and all dependencies in a single jar file.  To build a shadow 
+jar from your project run `./gradlew shadowJar`.  This will create a 
+`coding-challenge-shadow.jar` file in the `build/libs` directory.
+
+You can then start your application by running the command
+`java -jar ./build/libs/coding-challenge-shadow.jar`
+
+## IDEA
+
+You are free to use whichever editor or IDE you want providing your
+projects build does not depend on that IDE.  Most of the Java
+developers at New Relic use IDEA from
+[JetBrains](https://www.jetbrains.com/).  JetBrains provides
+a community edition of IDEA which you can download and use without
+charge.
+
+If you are planning to use IDEA you can generate the IDEA project files
+by running `./gradlew idea` and directly opening the project folder
+as a project in idea.
+
