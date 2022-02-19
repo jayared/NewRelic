@@ -14,7 +14,7 @@ Created LogWriterTask to write to Numbers.Log
 
 Any data that does not conform to a valid line of input is discarded and the client connection terminated immediately and without comment.
 
-Created SummaryTask to write Summary for 10 seconds in the console.
+Created SummaryTask to write Summary for every 10 seconds in the console.
 
 
 A Server class that handles and reads the input streams for each of the clients. responding to inputs dynamically as they come in.
