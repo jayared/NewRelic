@@ -45,8 +45,7 @@ public final class LogWriterTask implements Runnable {
 						outputWriter.newLine();
 						outputWriter.flush();
 					} catch (IOException e) {
-						System.err.println(e);
-						;
+						System.err.println(e);						
 					}
 				}
 			}
