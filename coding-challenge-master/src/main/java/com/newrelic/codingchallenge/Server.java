@@ -88,7 +88,6 @@ public class Server {
 						inputLine = in.readLine();
 					} catch (SocketException e) {
 						System.err.println(e);
-						;
 						break;
 					}
 
@@ -104,8 +103,7 @@ public class Server {
 					blockingQueue.add(parseInt(inputLine));
 				}
 			} catch (IOException | NumberFormatException e) {
-				System.err.println(e);
-				;
+				System.err.println(e);				
 			} finally {
 				closeSocket();
 			}
