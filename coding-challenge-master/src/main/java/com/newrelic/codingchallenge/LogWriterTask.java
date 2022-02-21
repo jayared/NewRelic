@@ -24,15 +24,7 @@ public final class LogWriterTask implements Runnable {
 		timer.scheduleAtFixedRate(new SummaryTask(), 0, SUMMARY_WAIT_PERIOD);
 	}
 
-	public String removeZero(String str) {
-		int i = 0;
-		while (i < str.length() && str.charAt(i) == '0')
-			i++;
-
-		StringBuilder sb = new StringBuilder(str);
-		sb.replace(0, i, "");
-		return sb.toString();
-	}
+	
 
 	@Override
 	public void run() {
@@ -51,7 +43,7 @@ public final class LogWriterTask implements Runnable {
 					uniqueCount++;
 					uniqueTotal++;
 					try {
-						outputWriter.write(removeZero(String.format("%09d", number)));
+						outputWriter.write(String.format("%09d", number));
 						outputWriter.newLine();
 						outputWriter.flush();
 					} catch (IOException e) {
