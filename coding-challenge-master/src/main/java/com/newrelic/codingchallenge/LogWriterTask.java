@@ -29,7 +29,7 @@ public final class LogWriterTask implements Runnable {
 		while (i < str.length() && str.charAt(i) == '0')
 			i++;
 
-		StringBuffer sb = new StringBuffer(str);
+		StringBuilder sb = new StringBuilder(str);
 		sb.replace(0, i, "");
 		return sb.toString();
 	}
